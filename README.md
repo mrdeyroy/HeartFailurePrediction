@@ -3,7 +3,7 @@
 A machine learning project that predicts the risk of heart failure based on clinical records. Trained using Random Forest and deployed with a Flask web application for real-time predictions. Built as part of a predictive modeling bootcamp.
 
 
-## 📁 Project Structure
+## Project Structure
 
 HeartFailurePrediction/\
 ├── model_training.ipynb &emsp;&emsp;      # Jupyter notebook for model training\
@@ -14,14 +14,14 @@ HeartFailurePrediction/\
 │   └── index.html     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;        # HTML form with inline CSS
 
 
-## 🧠 Model
+## Model
 
 --> Algorithm: Random Forest Classifier
 
 --> Accuracy: ~85% on test data
 
 --> Target: DEATH_EVENT (1 = death occurred, 0 = no death)
-## 🚀 Features
+## Features
 
 ~ Trained ML model using clinical data
 
@@ -30,7 +30,7 @@ HeartFailurePrediction/\
 ~ Clean UI with inline CSS
 
 ~ Real-time prediction and display of result
-## 📊 Dataset
+## Dataset
 
 Source: Provided by Bootcamp
 
