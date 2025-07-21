@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Heart Failure Risk Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #fce4ec);
+            padding: 40px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #006064;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        label {
+            font-weight: 600;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+
+        input[type="submit"] {
+            background-color: #006064;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Heart Failure Risk Prediction</h2>
+        <form action="/predict_devtown_proj" method="post">
+            <label>Age</label>
+            <input type="number" name="age" step="any" required>
+
+            <label>Anaemia (1 = Yes, 0 = No)</label>
+            <input type="number" name="anaemia" min="0" max="1" required>
+
+            <label>Creatinine Phosphokinase</label>
+            <input type="number" name="creatinine_phosphokinase" required>
+
+            <label>Diabetes (1 = Yes, 0 = No)</label>
+            <input type="number" name="diabetes" min="0" max="1" required>
+
+            <label>Ejection Fraction</label>
+            <input type="number" name="ejection_fraction" required>
+
+            <label>High Blood Pressure (1 = Yes, 0 = No)</label>
+            <input type="number" name="high_blood_pressure" min="0" max="1" required>
+
+            <label>Platelets</label>
+            <input type="number" name="platelets" step="any" required>
+
+            <label>Serum Creatinine</label>
+            <input type="number" name="serum_creatinine" step="any" required>
+
+            <label>Serum Sodium</label>
+            <input type="number" name="serum_sodium" required>
+
+            <label>Sex (1 = Male, 0 = Female)</label>
+            <input type="number" name="sex" min="0" max="1" required>
+
+            <label>Smoking (1 = Yes, 0 = No)</label>
+            <input type="number" name="smoking" min="0" max="1" required>
+
+            <label>Time (in days)</label>
+            <input type="number" name="time" required>
+
+            <div class="full-width">
+                <input type="submit" value="Predict">
+            </div>
+        </form>
+
+        {% if result %}
+        <div class="result" id="prediction-result" style="display: none;">{{ result }}</div>
+        <script>
+            const result = document.getElementById("prediction-result").innerText.trim().toLowerCase();
+            if (result.includes("high")) {
+                alert("⚠️ High Risk of Death. Please consult a doctor immediately!");
+            } else if (result.includes("low")) {
+                alert("✅ Low Risk of Death. Keep maintaining a healthy lifestyle!");
+            }
+        </script>
+        {% endif %}
+    </div>
+</body>
+</html>
